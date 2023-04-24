@@ -2,7 +2,7 @@
   "name": "mini-social-mountain",
   "version": "0.1.0",
   "main": "build/app.js",
-  "proxy": "http://localhost:41",
+  "proxy": "http://localhost:8080",
   "nodemonConfig": {
     "ext": "js,sql",
     "ignore": [
