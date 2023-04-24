@@ -6,13 +6,13 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(true);
 
-  const url = 'https://socialmtn.devmountain.com'
-
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    console.log("username: ", username, " password: ", password);
+    let body = {username, password}
 
-    axios.post(register ? `${url}/register` : `${url}/login`, {username, password})
+    console.log(body)
+
+    axios.post(register ? `/register` : `/login`, body)
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
   };
