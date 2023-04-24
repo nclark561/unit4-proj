@@ -51,8 +51,19 @@ export const AuthContextProvider = (props) => {
 
 
   const logout = () => {}
+//@ts-ignore
+  const login = (tkn, expTime, useId) => {
+    setToken(tkn)
+    setUserId(useId)
 
-  const login = () => {}
+    localStorage.setItem('token', tkn)
+    localStorage.setItem('userId', useId)
+    localStorage.setItem('expirationTime', expTime)
+
+    const remainingTime = calculateRemainingTime(expTime)
+
+    logoutTimer = setTimeout(() => {logout()}, remainingTime)
+  }
 
   const contextValue = {
     token,
