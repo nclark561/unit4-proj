@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import AuthContext from "../store/authContext";
 
 const Auth = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(true);
+  const authCtx = useContext(AuthContext)
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -13,7 +15,10 @@ const Auth = () => {
     console.log(body)
 
     axios.post(register ? `/register` : `/login`, body)
-            .then(res => console.log(res.data))
+            .then(res => {
+              //@ts-ignore
+              authCtx.login(res.data.token, res.data.exp, res.data.userId)
+            })
             .catch(err => console.log(err))
   };
 
