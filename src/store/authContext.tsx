@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, createContext } from 'react'
 
-let logoutTimer
+let logoutTimer: NodeJS.Timeout
 
 const AuthContext = createContext({
   token: '',
@@ -50,7 +50,16 @@ export const AuthContextProvider = (props) => {
   const [userId, setUserId] = useState(null)
 
 
-  const logout = () => {}
+  const logout = () => {
+    setToken(null)
+    setUserId(null)
+
+    localStorage.clear()
+
+    if(logoutTimer) {
+      clearTimeout(logoutTimer)
+    }
+  }
 //@ts-ignore
   const login = (tkn, expTime, useId) => {
     setToken(tkn)
