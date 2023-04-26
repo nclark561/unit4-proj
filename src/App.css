@@ -191,6 +191,7 @@ main {
 	background-color: #171717;
 	color: #f0f0f0;
 	transform: translateY(-3px);
+	cursor: pointer;
 }
 
 
@@ -230,6 +231,7 @@ main {
 	display: flex;
 	align-items: center;
 }
+
 
 .add-post-input {
 	width: 300px;

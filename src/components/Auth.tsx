@@ -18,8 +18,12 @@ const Auth = () => {
             .then(res => {
               //@ts-ignore
               authCtx.login(res.data.token, res.data.exp, res.data.id)
+              console.log(res)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+              console.log(err)
+              alert(err.response.data)
+            })
   };
 
   return (
