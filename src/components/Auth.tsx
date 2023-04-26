@@ -17,7 +17,7 @@ const Auth = () => {
     axios.post(register ? `/register` : `/login`, body)
             .then(res => {
               //@ts-ignore
-              authCtx.login(res.data.token, res.data.exp, res.data.userId)
+              authCtx.login(res.data.token, res.data.exp, res.data.id)
             })
             .catch(err => console.log(err))
   };
